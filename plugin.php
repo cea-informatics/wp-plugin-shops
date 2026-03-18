@@ -14,6 +14,17 @@
 
 if (!defined('ABSPATH')) exit;
 
+define('WPS_VERSION', '1.0.4');
+define('WPS_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('WPS_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+require_once WPS_PLUGIN_DIR . 'includes/class-wps-db.php';
+require_once WPS_PLUGIN_DIR . 'includes/class-wps-admin.php';
+
+register_activation_hook(__FILE__, array('WPS_DB', 'install'));
+
+WPS_Admin::init();
+
 function wpw_display_shops() {
     ob_start(); ?>
     <div id="wp-shops">

@@ -1,0 +1,66 @@
+/* WordPress Plugin Shops - Admin Styles */
+
+.wps-status-active {
+    color: #46b450;
+    font-weight: 600;
+}
+
+.wps-status-inactive {
+    color: #dc3232;
+    font-weight: 600;
+}
+
+.wps-media-upload {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.wps-media-upload-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.wps-media-upload .regular-text {
+    flex: 1;
+}
+
+.wps-image-preview {
+    margin-top: 10px;
+}
+
+.wps-image-preview img {
+    display: block;
+    max-width: 400px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.required {
+    color: #dc3232;
+}
+
+/* Shop card styling for list view */
+.wp-list-table .dashicons {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+/* Form improvements */
+.form-table th {
+    width: 200px;
+}
+
+.form-table td {
+    padding: 15px 10px;
+}
+
+.form-table .description {
+    margin-top: 5px;
+    color: #646970;
+    font-style: italic;
+}
