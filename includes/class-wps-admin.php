@@ -14,8 +14,8 @@ class WPS_Admin {
      */
     public static function register_menus() {
         add_menu_page(
-            __('Shops Management', 'wp-plugin-shops'),
-            __('Shops', 'wp-plugin-shops'),
+            __('Boutiques', 'wp-plugin-shops'),
+            __('Boutiques', 'wp-plugin-shops'),
             'manage_options',
             'wps-shops',
             array(__CLASS__, 'page_shops'),
@@ -25,8 +25,8 @@ class WPS_Admin {
 
         add_submenu_page(
             'wps-shops',
-            __('All Shops', 'wp-plugin-shops'),
-            __('All Shops', 'wp-plugin-shops'),
+            __('Toutes les boutiques', 'wp-plugin-shops'),
+            __('Toutes les boutiques', 'wp-plugin-shops'),
             'manage_options',
             'wps-shops',
             array(__CLASS__, 'page_shops')

@@ -2,9 +2,9 @@
 if (!defined('ABSPATH')) exit;
 ?>
 <div class="wrap">
-    <h1 class="wp-heading-inline"><?php esc_html_e('Shops', 'wp-plugin-shops'); ?></h1>
+    <h1 class="wp-heading-inline"><?php esc_html_e('Boutiques', 'wp-plugin-shops'); ?></h1>
     <a href="<?php echo esc_url(admin_url('admin.php?page=wps-shops&action=new')); ?>" class="page-title-action">
-        <?php esc_html_e('Add New', 'wp-plugin-shops'); ?>
+        <?php esc_html_e('Ajouter une boutique', 'wp-plugin-shops'); ?>
     </a>
     <hr class="wp-heading-inline">
 
