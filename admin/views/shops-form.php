@@ -5,11 +5,13 @@ $is_edit = !empty($shop);
 $title = $is_edit ? __('Edit Shop', 'wp-plugin-shops') : __('Add New Shop', 'wp-plugin-shops');
 
 $name = $is_edit ? esc_attr($shop->name) : '';
+$number = $is_edit ? esc_attr($shop->number) : '';
 $description = $is_edit ? esc_textarea($shop->description) : '';
 $floor = $is_edit ? esc_attr($shop->floor) : '';
 $whatsapp = $is_edit ? esc_attr($shop->whatsapp) : '';
 $email = $is_edit ? esc_attr($shop->email) : '';
 $phone = $is_edit ? esc_attr($shop->phone) : '';
+$logo_url = $is_edit ? esc_url($shop->logo_url) : '';
 $image_url = $is_edit ? esc_url($shop->image_url) : '';
 $plan_url = $is_edit ? esc_url($shop->plan_url) : '';
 $active = $is_edit ? (bool)$shop->active : true;
@@ -37,6 +39,20 @@ $active = $is_edit ? (bool)$shop->active : true;
                                value="<?php echo $name; ?>" 
                                class="regular-text" 
                                required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">
+                        <label for="number"><?php esc_html_e('Shop Number', 'wp-plugin-shops'); ?></label>
+                    </th>
+                    <td>
+                        <input type="text"
+                               id="number"
+                               name="number"
+                               value="<?php echo $number; ?>"
+                               class="regular-text"
+                               placeholder="A12">
                     </td>
                 </tr>
 
@@ -129,6 +145,33 @@ $active = $is_edit ? (bool)$shop->active : true;
                                 </div>
                             <?php else: ?>
                                 <div class="wps-image-preview" id="image_url_preview" style="display: none;"></div>
+                            <?php endif; ?>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">
+                        <label for="logo_url"><?php esc_html_e('Shop Logo', 'wp-plugin-shops'); ?></label>
+                    </th>
+                    <td>
+                        <div class="wps-media-upload">
+                            <div class="wps-media-upload-header">
+                                <input type="url"
+                                    id="logo_url"
+                                    name="logo_url"
+                                    value="<?php echo $logo_url; ?>"
+                                    class="regular-text wps-media-input">
+                                <button type="button" class="button wps-media-upload-btn" data-target="logo_url">
+                                    <?php esc_html_e('Upload Logo', 'wp-plugin-shops'); ?>
+                                </button>
+                            </div>
+                            <?php if (!empty($logo_url)): ?>
+                                <div class="wps-image-preview" id="logo_url_preview">
+                                    <img src="<?php echo $logo_url; ?>" style="max-width: 200px; margin-top: 10px; border-radius: 4px; background: #fff; padding: 8px;">
+                                </div>
+                            <?php else: ?>
+                                <div class="wps-image-preview" id="logo_url_preview" style="display: none;"></div>
                             <?php endif; ?>
                         </div>
                     </td>

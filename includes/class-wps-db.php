@@ -15,12 +15,14 @@ class WPS_DB {
 
         $sql = "CREATE TABLE $shops_table (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            number VARCHAR(50),
             name VARCHAR(255) NOT NULL,
             description TEXT,
             floor SMALLINT,
             whatsapp VARCHAR(50),
             email VARCHAR(255),
             phone VARCHAR(50),
+            logo_url VARCHAR(2083),
             image_url VARCHAR(2083),
             plan_url VARCHAR(2083),
             active BOOLEAN DEFAULT false,
@@ -69,16 +71,18 @@ class WPS_DB {
         $table = $wpdb->prefix . 'wps_shops';
 
         $wpdb->insert($table, array(
+            'number'      => sanitize_text_field($data['number']),
             'name'        => sanitize_text_field($data['name']),
             'description' => sanitize_textarea_field($data['description']),
             'floor'       => sanitize_text_field($data['floor']),
             'whatsapp'    => sanitize_text_field($data['whatsapp']),
             'email'       => sanitize_email($data['email']),
             'phone'       => sanitize_text_field($data['phone']),
+            'logo_url'    => esc_url_raw($data['logo_url']),
             'image_url'   => esc_url_raw($data['image_url']),
             'plan_url'    => esc_url_raw($data['plan_url']),
             'active'      => !empty($data['active']) ? 1 : 0,
-        ), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'));
+        ), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'));
 
         return $wpdb->insert_id;
     }
@@ -91,16 +95,18 @@ class WPS_DB {
         $table = $wpdb->prefix . 'wps_shops';
 
         return $wpdb->update($table, array(
+            'number'      => sanitize_text_field($data['number']),
             'name'        => sanitize_text_field($data['name']),
             'description' => sanitize_textarea_field($data['description']),
             'floor'       => sanitize_text_field($data['floor']),
             'whatsapp'    => sanitize_text_field($data['whatsapp']),
             'email'       => sanitize_email($data['email']),
             'phone'       => sanitize_text_field($data['phone']),
+            'logo_url'    => esc_url_raw($data['logo_url']),
             'image_url'   => esc_url_raw($data['image_url']),
             'plan_url'    => esc_url_raw($data['plan_url']),
             'active'      => !empty($data['active']) ? 1 : 0,
-        ), array('id' => $id), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'), array('%d'));
+        ), array('id' => $id), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'), array('%d'));
     }
 
     /**

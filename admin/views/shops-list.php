@@ -34,11 +34,11 @@ if (!defined('ABSPATH')) exit;
         <table class="wp-list-table widefat fixed striped">
             <thead>
                 <tr>
-                    <th style="width: 80px;"><?php esc_html_e('Image', 'wp-plugin-shops'); ?></th>
-                    <th><?php esc_html_e('Name', 'wp-plugin-shops'); ?></th>
-                    <th><?php esc_html_e('Floor', 'wp-plugin-shops'); ?></th>
+                    <th style="width: 80px;"><?php esc_html_e('Logo', 'wp-plugin-shops'); ?></th>
+                    <th><?php esc_html_e('Nom ou numéro', 'wp-plugin-shops'); ?></th>
+                    <th><?php esc_html_e('Étage', 'wp-plugin-shops'); ?></th>
                     <th><?php esc_html_e('Email', 'wp-plugin-shops'); ?></th>
-                    <th><?php esc_html_e('Phone', 'wp-plugin-shops'); ?></th>
+                    <th><?php esc_html_e('Téléphone', 'wp-plugin-shops'); ?></th>
                     <th style="width: 80px;"><?php esc_html_e('Status', 'wp-plugin-shops'); ?></th>
                     <th style="width: 150px;"><?php esc_html_e('Actions', 'wp-plugin-shops'); ?></th>
                 </tr>
@@ -47,17 +47,18 @@ if (!defined('ABSPATH')) exit;
                 <?php foreach ($shops as $shop): ?>
                     <tr>
                         <td>
-                            <?php if (!empty($shop->image_url)): ?>
-                                <img src="<?php echo esc_url($shop->image_url); ?>" 
+                            <?php if (!empty($shop->logo_url)): ?>
+                                <img src="<?php echo esc_url($shop->logo_url); ?>" 
                                      alt="<?php echo esc_attr($shop->name); ?>" 
-                                     style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
-                            <?php else: ?>
-                                <div style="width: 60px; height: 60px; background: #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
-                                    <span class="dashicons dashicons-store" style="color: #999;"></span>
-                                </div>
+                                     style="width: 60px; height: 60px; object-fit: contain; background: #fff; border: 1px solid #eee; border-radius: 6px; padding: 6px;">
                             <?php endif; ?>
                         </td>
-                        <td><strong><?php echo esc_html($shop->name); ?></strong></td>
+                        <td>
+                            <strong><?php echo esc_html($shop->name); ?></strong>
+                            <?php if (!empty($shop->number)): ?>
+                                <div style="color:#666;font-size:12px;">№ <?php echo esc_html($shop->number); ?></div>
+                            <?php endif; ?>
+                        </td>
                         <td><?php echo esc_html($shop->floor); ?></td>
                         <td><?php echo esc_html($shop->email); ?></td>
                         <td><?php echo esc_html($shop->phone); ?></td>

@@ -88,14 +88,16 @@ class WPS_Admin {
         }
 
         $data = array(
+            'number'      => isset($_POST['number']) ? $_POST['number'] : null,
             'name'        => isset($_POST['name']) ? $_POST['name'] : null,
             'description' => isset($_POST['description']) ? $_POST['description'] : null,
             'floor'       => isset($_POST['floor']) ? $_POST['floor'] : null,
             'whatsapp'    => isset($_POST['whatsapp']) ? $_POST['whatsapp'] : null,
             'email'       => isset($_POST['email']) ? $_POST['email'] : null,
             'phone'       => isset($_POST['phone']) ? $_POST['phone'] : null,
-            'image_url'   => isset($_POST['image_url']) ? $_POST['image_url'] : null,
-            'plan_url'    => isset($_POST['plan_url']) ? $_POST['plan_url'] : null,
+            'logo_url'    => self::sanitize_optional_url($_POST['logo_url'] ?? ''),
+            'image_url'   => self::sanitize_optional_url($_POST['image_url'] ?? ''),
+            'plan_url'    => self::sanitize_optional_url($_POST['plan_url'] ?? ''),
             'active'      => isset($_POST['active']) ? 1 : 0,
         );
 
@@ -123,5 +125,16 @@ class WPS_Admin {
 
         wp_redirect(admin_url('admin.php?page=wps-shops&message=deleted'));
         exit;
+    }
+
+    /**
+     * Return a URL or an empty string if not valid/empty. Prevents "http://0" artifacts.
+     */
+    private static function sanitize_optional_url($url) {
+        $url = trim($url ?? '');
+        if ($url === '') {
+            return '';
+        }
+        return filter_var($url, FILTER_VALIDATE_URL) ? $url : '';
     }
 }

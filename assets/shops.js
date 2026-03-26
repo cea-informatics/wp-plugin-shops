@@ -7,37 +7,17 @@
 
     const translations = window.wpsTranslations || {};
 
-    $(document).ready(function() {
-        
+    $(document).ready(function() {        
+        // Search by name or number
+        $('#wps-search').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            filterCards(searchTerm, $('#wps-floor-filter').val());
+        });
+
         // Floor filter
         $('#wps-floor-filter').on('change', function() {
             const selectedFloor = $(this).val();
-            
-            $('.wps-shop-card').each(function() {
-                const shopFloor = $(this).data('floor');
-                
-                if (selectedFloor === '' || shopFloor === selectedFloor) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
-        });
-        
-        // Search functionality
-        $('#wps-search').on('keyup', function() {
-            const searchTerm = $(this).val().toLowerCase();
-            
-            $('.wps-shop-card').each(function() {
-                const shopName = $(this).data('name').toLowerCase();
-                const shopDescription = $(this).find('.wps-shop-description').text().toLowerCase();
-                
-                if (shopName.includes(searchTerm) || shopDescription.includes(searchTerm)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
+            filterCards($('#wps-search').val().toLowerCase(), selectedFloor);
         });
         
         // Floor plan modal
@@ -98,6 +78,24 @@
     function closePlanModal() {
         $('.wps-modal').remove();
         $(document).off('keyup.wpsmodal');
+    }
+
+    function filterCards(searchTerm, floorFilter) {
+        const floor = (floorFilter ?? '').toString().trim().toLowerCase();
+        $('.wps-shop-card').each(function() {
+            const shopName = ($(this).data('name') || '').toString().toLowerCase();
+            const shopNumber = ($(this).data('number') || '').toString().toLowerCase();
+            const shopFloor = ($(this).data('floor') ?? '').toString().trim().toLowerCase();
+
+            const matchesSearch = !searchTerm || shopName.includes(searchTerm) || shopNumber.includes(searchTerm);
+            const matchesFloor = !floor || shopFloor === floor;
+
+            if (matchesSearch && matchesFloor) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     }
     
 })(jQuery);
