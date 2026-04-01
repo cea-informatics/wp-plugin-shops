@@ -43,6 +43,24 @@ class WPS_Admin {
 
         wp_enqueue_style('wps-admin', WPS_PLUGIN_URL . 'assets/admin.css', array(), WPS_VERSION);
         wp_enqueue_media();
+        
+        // IMask library (vanilla) for input masking — loaded only on plugin admin pages
+        wp_enqueue_script(
+            'imask',
+            'https://unpkg.com/imask@6.4.2/dist/imask.min.js',
+            array(),
+            '6.4.2',
+            true
+        );
+
+        // Plugin admin JS (initializes media uploader and phone mask)
+        wp_enqueue_script(
+            'wps-admin-js',
+            WPS_PLUGIN_URL . 'assets/admin.js',
+            array('jquery', 'imask'),
+            WPS_VERSION,
+            true
+        );
     }
 
     /**

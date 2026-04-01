@@ -2,7 +2,7 @@
 if (!defined('ABSPATH')) exit;
 
 $is_edit = !empty($shop);
-$title = $is_edit ? __('Edit Shop', 'wp-plugin-shops') : __('Add New Shop', 'wp-plugin-shops');
+$title = $is_edit ? 'Modifier ' . esc_attr($shop->name) : 'Créer une nouvelle boutique';
 
 $name = $is_edit ? esc_attr($shop->name) : '';
 $number = $is_edit ? esc_attr($shop->number) : '';
@@ -30,7 +30,7 @@ $active = $is_edit ? (bool)$shop->active : true;
             <tbody>
                 <tr>
                     <th scope="row">
-                        <label for="name"><?php esc_html_e('Shop Name', 'wp-plugin-shops'); ?> <span class="required">*</span></label>
+                        <label for="name"><?php esc_html_e('Nom', 'wp-plugin-shops'); ?> <span class="required">*</span></label>
                     </th>
                     <td>
                         <input type="text" 
@@ -44,7 +44,7 @@ $active = $is_edit ? (bool)$shop->active : true;
 
                 <tr>
                     <th scope="row">
-                        <label for="number"><?php esc_html_e('Shop Number', 'wp-plugin-shops'); ?></label>
+                        <label for="number"><?php esc_html_e('Numéro de la boutique', 'wp-plugin-shops'); ?></label>
                     </th>
                     <td>
                         <input type="text"
@@ -70,14 +70,17 @@ $active = $is_edit ? (bool)$shop->active : true;
 
                 <tr>
                     <th scope="row">
-                        <label for="floor"><?php esc_html_e('Floor', 'wp-plugin-shops'); ?></label>
+                        <label for="floor"><?php esc_html_e('Étage', 'wp-plugin-shops'); ?></label>
                     </th>
                     <td>
-                        <input type="text" 
-                               id="floor" 
-                               name="floor" 
-                               value="<?php echo $floor; ?>" 
-                               class="regular-text">
+                        <select id="floor" name="floor" class="regular-text">
+                            <option value=""><?php esc_html_e('Sélectionner un étage', 'wp-plugin-shops'); ?></option>
+                            <option value="-1" <?php selected($floor, '-1'); ?>>Sous-sol</option>
+                            <option value="Rez-de-chaussée" <?php selected($floor, 'Rez-de-chaussée'); ?>>Rez-de-chaussée</option>
+                            <option value="1" <?php selected($floor, '1'); ?>>1er étage</option>
+                            <option value="2" <?php selected($floor, '2'); ?>>2ème étage</option>
+                            <option value="3" <?php selected($floor, '3'); ?>>3ème étage</option>
+                        </select>
                     </td>
                 </tr>
 
@@ -111,21 +114,21 @@ $active = $is_edit ? (bool)$shop->active : true;
 
                 <tr>
                     <th scope="row">
-                        <label for="phone"><?php esc_html_e('Phone', 'wp-plugin-shops'); ?></label>
+                        <label for="phone"><?php esc_html_e('Téléphone', 'wp-plugin-shops'); ?></label>
                     </th>
                     <td>
-                        <input type="text" 
-                               id="phone" 
-                               name="phone" 
-                               value="<?php echo $phone; ?>" 
-                               class="regular-text"
-                               placeholder="+33 1 23 45 67 89">
+                            <input type="text" 
+                                   id="phone" 
+                                   name="phone" 
+                                   value="<?php echo $phone; ?>" 
+                                   class="regular-text"
+                                   placeholder="+41 XX XXX XX XX">
                     </td>
                 </tr>
 
                 <tr>
                     <th scope="row">
-                        <label for="image_url"><?php esc_html_e('Shop Image', 'wp-plugin-shops'); ?></label>
+                        <label for="image_url"><?php esc_html_e('Image principale', 'wp-plugin-shops'); ?></label>
                     </th>
                     <td>
                         <div class="wps-media-upload">
@@ -152,7 +155,7 @@ $active = $is_edit ? (bool)$shop->active : true;
 
                 <tr>
                     <th scope="row">
-                        <label for="logo_url"><?php esc_html_e('Shop Logo', 'wp-plugin-shops'); ?></label>
+                        <label for="logo_url"><?php esc_html_e('Logo', 'wp-plugin-shops'); ?></label>
                     </th>
                     <td>
                         <div class="wps-media-upload">
@@ -179,7 +182,7 @@ $active = $is_edit ? (bool)$shop->active : true;
 
                 <tr>
                     <th scope="row">
-                        <label for="plan_url"><?php esc_html_e('Floor Plan Image', 'wp-plugin-shops'); ?></label>
+                        <label for="plan_url"><?php esc_html_e('Plan d\'accès', 'wp-plugin-shops'); ?></label>
                     </th>
                     <td>
                         <div class="wps-media-upload">
@@ -206,7 +209,7 @@ $active = $is_edit ? (bool)$shop->active : true;
 
                 <tr>
                     <th scope="row">
-                        <label for="active"><?php esc_html_e('Status', 'wp-plugin-shops'); ?></label>
+                        <label for="active"><?php esc_html_e('Statut', 'wp-plugin-shops'); ?></label>
                     </th>
                     <td>
                         <label>
@@ -215,7 +218,7 @@ $active = $is_edit ? (bool)$shop->active : true;
                                    name="active" 
                                    value="1" 
                                    <?php checked($active, true); ?>>
-                            <?php esc_html_e('Active (visible on the website)', 'wp-plugin-shops'); ?>
+                            <?php esc_html_e('Activé (visible sur le site)', 'wp-plugin-shops'); ?>
                         </label>
                     </td>
                 </tr>
@@ -226,9 +229,9 @@ $active = $is_edit ? (bool)$shop->active : true;
             <input type="submit" 
                    name="submit" 
                    class="button button-primary" 
-                   value="<?php echo $is_edit ? esc_attr__('Update Shop', 'wp-plugin-shops') : esc_attr__('Create Shop', 'wp-plugin-shops'); ?>">
+                   value="<?php echo $is_edit ? esc_attr__('Modifier une boutique', 'wp-plugin-shops') : esc_attr__('Créer une boutique', 'wp-plugin-shops'); ?>">
             <a href="<?php echo esc_url(admin_url('admin.php?page=wps-shops')); ?>" class="button">
-                <?php esc_html_e('Cancel', 'wp-plugin-shops'); ?>
+                <?php esc_html_e('Annuler', 'wp-plugin-shops'); ?>
             </a>
         </p>
     </form>

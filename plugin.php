@@ -14,7 +14,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('WPS_VERSION', '1.0.5');
+define('WPS_VERSION', '1.0.6');
 define('WPS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WPS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -54,13 +54,25 @@ function wps_display_shops() {
             </div>
         <?php else: ?>
             <div class="wps-filters">
-                <input type="text" id="wps-search" class="wps-filter-input" placeholder="<?php esc_attr_e('Rechercher par nom ou numéro', 'wp-plugin-shops'); ?>" aria-label="<?php esc_attr_e('Search shops', 'wp-plugin-shops'); ?>">
-                <select id="wps-floor-filter" class="wps-filter-select" aria-label="<?php esc_attr_e('Filtrer par étage', 'wp-plugin-shops'); ?>">
-                    <option value=""><?php esc_html_e('Tous les étages', 'wp-plugin-shops'); ?></option>
-                    <?php foreach ($floors as $floor): ?>
-                        <option value="<?php echo esc_attr($floor); ?>"><?php echo esc_html($floor); ?></option>
-                    <?php endforeach; ?>
-                </select>
+                <h5>Rechercher parmis les boutiques</h2>
+                <div class="wps-filters-form">
+                    <input type="text" id="wps-search" class="wps-filter-input" placeholder="Nom *">
+                    <select id="wps-floor-filter" class="wps-filter-select" aria-label="Étage">
+                        <option value=""><?php esc_html_e('Étage', 'wp-plugin-shops'); ?></option>
+                        <?php foreach ($floors as $floor): ?>
+                            <option value="<?php echo esc_attr($floor); ?>"><?php echo esc_html($floor); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="wp-block-stackable-button stk-block-button stk-block stk-1d86eb9">
+                        <button type="button" id="wps-apply-filters" class="wps-filter-button stk-link stk-button stk--hover-effect-darken">
+                            <span class="has-text-color has-palette-color-8-color stk-button__inner-text">Rechercher</span>
+                            <svg class="wps-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" style="margin-left:8px;vertical-align:middle">
+                                <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="2"/>
+                                <line x1="14.1213" y1="14.1213" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="wps-shops-grid">
