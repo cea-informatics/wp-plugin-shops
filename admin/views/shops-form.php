@@ -51,8 +51,7 @@ $active = $is_edit ? (bool)$shop->active : true;
                                id="number"
                                name="number"
                                value="<?php echo $number; ?>"
-                               class="regular-text"
-                               placeholder="A12">
+                               class="regular-text">
                     </td>
                 </tr>
 
@@ -93,7 +92,8 @@ $active = $is_edit ? (bool)$shop->active : true;
                                name="whatsapp" 
                                value="<?php echo $whatsapp; ?>" 
                                class="regular-text"
-                               placeholder="+33 6 12 34 56 78">
+                               placeholder="+41 XX XXX XX XX"
+                               data-imask="+41 00 000 00 00">
                     </td>
                 </tr>
 
@@ -106,8 +106,7 @@ $active = $is_edit ? (bool)$shop->active : true;
                                id="email" 
                                name="email" 
                                value="<?php echo $email; ?>" 
-                               class="regular-text"
-                               placeholder="contact@shop.com">
+                               class="regular-text">
                     </td>
                 </tr>
 
@@ -121,7 +120,8 @@ $active = $is_edit ? (bool)$shop->active : true;
                                    name="phone" 
                                    value="<?php echo $phone; ?>" 
                                    class="regular-text"
-                                   placeholder="+41 XX XXX XX XX">
+                                   placeholder="+41 XX XXX XX XX"
+                                   data-imask="+41 00 000 00 00">
                     </td>
                 </tr>
 

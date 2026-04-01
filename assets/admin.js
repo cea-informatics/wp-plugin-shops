@@ -2,18 +2,21 @@
     'use strict';
 
     $(document).ready(function(){
-        // Media uploader buttons are already wired inline in the PHP view; keep compatibility.
+        if (typeof IMask === 'undefined') {
+            console.warn('IMask library is not loaded. Phone input masking will not work.');
+            return;
+        }
+
         // Initialize IMask for the phone field if available.
-        var phoneEl = document.getElementById('phone');
-        if (phoneEl && typeof IMask !== 'undefined') {
+        document.querySelectorAll('[data-imask]').forEach(function(el) {
             try {
-                IMask(phoneEl, {
-                    mask: '+41 00 000 00 00'
+                IMask(el, {
+                    mask: el.getAttribute('data-imask'),
                 });
             } catch (e) {
                 // fail silently
-                console.error('IMask init error', e);
+                console.error('IMask init error for', el, e);
             }
-        }
+        });
     });
 })(jQuery);
