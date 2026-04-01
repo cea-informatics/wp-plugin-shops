@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) exit;
         <?php esc_html_e('Ajouter une boutique', 'wp-plugin-shops'); ?>
     </a>
     <hr class="wp-heading-inline">
-
     <?php if (isset($_GET['message'])): ?>
         <div class="notice notice-success is-dismissible">
             <p>

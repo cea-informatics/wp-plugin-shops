@@ -8,16 +8,19 @@
     const translations = window.wpsTranslations || {};
 
     $(document).ready(function() {        
-        // Search by name or number
-        $('#wps-search').on('input', function() {
-            const searchTerm = $(this).val().toLowerCase();
-            filterCards(searchTerm, $('#wps-floor-filter').val());
-        });
+        const applyFilters = () => {
+            const searchTerm = $('#wps-search').val().toLowerCase();
+            const selectedFloor = $('#wps-floor-filter').val();
+            filterCards(searchTerm, selectedFloor);
+        };
 
-        // Floor filter
-        $('#wps-floor-filter').on('change', function() {
-            const selectedFloor = $(this).val();
-            filterCards($('#wps-search').val().toLowerCase(), selectedFloor);
+        $('#wps-apply-filters').on('click', applyFilters);
+
+        $('#wps-search').on('keypress', function(event) {
+            if (event.which === 13) {
+                event.preventDefault();
+                applyFilters();
+            }
         });
         
         // Floor plan modal
