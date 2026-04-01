@@ -75,11 +75,10 @@ $active = $is_edit ? (bool)$shop->active : true;
                     <td>
                         <select id="floor" name="floor" class="regular-text">
                             <option value=""><?php esc_html_e('Sélectionner un étage', 'wp-plugin-shops'); ?></option>
-                            <option value="-1" <?php selected($floor, '-1'); ?>>Sous-sol</option>
-                            <option value="Rez-de-chaussée" <?php selected($floor, 'Rez-de-chaussée'); ?>>Rez-de-chaussée</option>
-                            <option value="1" <?php selected($floor, '1'); ?>>1er étage</option>
-                            <option value="2" <?php selected($floor, '2'); ?>>2ème étage</option>
-                            <option value="3" <?php selected($floor, '3'); ?>>3ème étage</option>
+                            <?php $floors = enum_exists('WPS_Floor') ? WPS_Floor::options() : []; ?>
+                            <?php foreach ($floors as $val => $label): ?>
+                                <option value="<?php echo esc_attr($val); ?>" <?php selected((string)$floor, $val); ?>><?php echo esc_html($label); ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </td>
                 </tr>

@@ -58,7 +58,13 @@ if (!defined('ABSPATH')) exit;
                                 <div style="color:#666;font-size:12px;">№ <?php echo esc_html($shop->number); ?></div>
                             <?php endif; ?>
                         </td>
-                        <td><?php echo esc_html($shop->floor); ?></td>
+                        <td>
+                            <?php
+                            echo esc_html(enum_exists('WPS_Floor') 
+                                ? WPS_Floor::labelFor($shop->floor, (string)$shop->floor)
+                                : $shop->floor);
+                            ?>
+                        </td>
                         <td><?php echo esc_html($shop->email); ?></td>
                         <td><?php echo esc_html($shop->phone); ?></td>
                         <td>

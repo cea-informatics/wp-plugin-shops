@@ -20,6 +20,7 @@ define('WPS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once WPS_PLUGIN_DIR . 'includes/class-wps-db.php';
 require_once WPS_PLUGIN_DIR . 'includes/class-wps-admin.php';
+require_once WPS_PLUGIN_DIR . 'includes/class-wps-floor.php';
 
 register_activation_hook(__FILE__, array('WPS_DB', 'install'));
 
@@ -34,15 +35,7 @@ function wps_display_shops() {
         $shops = WPS_DB::get_shops(true);
     }
 
-    // Collect distinct floors for filter
-    $floors = array();
-    foreach ($shops as $shop) {
-        if (!empty($shop->floor)) {
-            $floors[] = $shop->floor;
-        }
-    }
-    $floors = array_values(array_unique($floors));
-    sort($floors);
+    $floors = enum_exists('WPS_Floor') ? WPS_Floor::options() : [];
 
     ob_start();
     ?>
@@ -59,8 +52,8 @@ function wps_display_shops() {
                     <input type="text" id="wps-search" class="wps-filter-input" placeholder="Nom *">
                     <select id="wps-floor-filter" class="wps-filter-select" aria-label="Étage">
                         <option value=""><?php esc_html_e('Étage', 'wp-plugin-shops'); ?></option>
-                        <?php foreach ($floors as $floor): ?>
-                            <option value="<?php echo esc_attr($floor); ?>"><?php echo esc_html($floor); ?></option>
+                        <?php foreach ($floors as $val => $label): ?>
+                            <option value="<?php echo esc_attr($val); ?>"><?php echo esc_html($label); ?></option>
                         <?php endforeach; ?>
                     </select>
                     <div class="wp-block-stackable-button stk-block-button stk-block stk-1d86eb9">
@@ -93,7 +86,13 @@ function wps_display_shops() {
                             <span class="wps-shop-number"><?php echo esc_html($shop->number); ?></span>
                         <?php endif; ?>
                         <?php if (!empty($shop->floor)): ?>
-                            <div class="wps-shop-floor"><?php echo esc_html($shop->floor); ?></div>
+                            <div class="wps-shop-floor">
+                            <?php
+                            echo esc_html(enum_exists('WPS_Floor') 
+                                ? WPS_Floor::labelFor($shop->floor, (string)$shop->floor)
+                                : $shop->floor);
+                            ?>
+                            </div>
                         <?php endif; ?>
                     </article>
                 <?php endforeach; ?>
