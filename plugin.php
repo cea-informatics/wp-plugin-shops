@@ -22,6 +22,7 @@ define('WPS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once WPS_PLUGIN_DIR . 'includes/class-wps-db.php';
 require_once WPS_PLUGIN_DIR . 'includes/class-wps-admin.php';
+require_once WPS_PLUGIN_DIR . 'includes/class-wps-floor.php';
 require_once WPS_PLUGIN_DIR . 'includes/shortcodes/shop-list-shortcode.php';
 require_once WPS_PLUGIN_DIR . 'includes/shortcodes/shop-detail-shortcode.php';
 
