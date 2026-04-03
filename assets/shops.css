@@ -2,15 +2,17 @@
 
 #wp-shops-container {
   max-width: 1290px;
-  margin: 40px auto 40px auto;
+  margin: 0 auto;
   width: 100%;
 }
 
 .wps-shops-grid {
+  --margin: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2.5rem;
-  width: 100%;
+  width: calc(100% + (var(--margin) * 2));
+  margin: 0 calc(var(--margin) * -1);
 }
 
 .wps-shop-card a {
@@ -82,26 +84,6 @@
   cursor: pointer;
 }
 
-.wps-btn-primary {
-  background: #0073aa;
-  color: #fff;
-}
-
-.wps-btn-primary:hover {
-  background: #005a87;
-  color: #fff;
-}
-
-.wps-btn-secondary {
-  background: #25d366;
-  color: #fff;
-}
-
-.wps-btn-secondary:hover {
-  background: #20ba5a;
-  color: #fff;
-}
-
 /* Filter section */
 .wps-filters {
   display: flex;
@@ -112,11 +94,7 @@
   margin-bottom: 30px;
   flex-wrap: wrap;
   background: white;
-  padding: 70px 100px;
-}
-
-.wps-filters h5 {
-  margin-bottom: 0;
+  padding: 0 0 70px;
 }
 
 .wps-filters-form {
