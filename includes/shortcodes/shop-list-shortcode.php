@@ -4,7 +4,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-function wps_display_shops($atts = []) {
+function wps_display_shops($atts = [])
+{
     $atts = shortcode_atts(
         ['detail_page_id' => 0],
         $atts,
@@ -34,7 +35,7 @@ function wps_display_shops($atts = []) {
     }
 
     ob_start();
-    ?>
+?>
     <div id="wp-shops-container">
         <?php if (empty($shops)): ?>
             <div class="wps-empty-state">
@@ -68,16 +69,17 @@ function wps_display_shops($atts = []) {
                         ? add_query_arg('shop_id', $shop_id, $detail_base_url)
                         : add_query_arg('shop_id', $shop_id, home_url('/'));
                     ?>
-                    <a class="wps-shop-detail-link" href="<?php echo esc_url($shop_url); ?>">
-                        <article
-                            class="wps-shop-card"
-                            aria-labelledby="wps-shop-<?php echo esc_attr($shop_id); ?>"
-                            data-name="<?php echo esc_attr($shop->name); ?>"
-                            data-number="<?php echo esc_attr($shop->number); ?>"
-                            data-floor="<?php echo esc_attr($shop->floor); ?>">
+                    <article
+                        class="wps-shop-card"
+                        aria-labelledby="wps-shop-<?php echo esc_attr($shop_id); ?>"
+                        data-name="<?php echo esc_attr($shop->name); ?>"
+                        data-number="<?php echo esc_attr($shop->number); ?>"
+                        data-floor="<?php echo esc_attr($shop->floor); ?>">
+                        <a class="wps-shop-detail-link" href="<?php echo esc_url($shop_url); ?>">
+
                             <?php if (!empty($shop->logo_url)): ?>
                                 <img class="wps-shop-logo" src="<?php echo esc_url($shop->logo_url); ?>"
-                                alt="<?php echo esc_attr($shop->name); ?>">
+                                    alt="<?php echo esc_attr($shop->name); ?>">
                             <?php else: ?>
                                 <h3 id="wps-shop-<?php echo esc_attr($shop_id); ?>" class="wps-shop-name"><?php echo esc_html($shop->name); ?></h3>
                             <?php endif; ?>
@@ -87,13 +89,13 @@ function wps_display_shops($atts = []) {
                             <?php if (!empty($shop->floor)): ?>
                                 <div class="wps-shop-floor"><?php echo esc_html($shop->floor); ?></div>
                             <?php endif; ?>
-                        </article>
-                    </a>
+                        </a>
+                    </article>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>
-    <?php
+<?php
 
     return ob_get_clean();
 }

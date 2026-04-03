@@ -1,228 +1,233 @@
 /* WordPress Plugin Shops - Frontend Styles */
 
 #wp-shops-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
 .wps-shops-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 2.5rem;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  width: 100%;
 }
 
-.wps-shop-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    gap: 1.5rem;
-    background: #fff;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid #e0e0e0;
-    width: 100%;
-    height: 100%;
+.wps-shop-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 1.5rem;
+  background: #fff;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  height: 100%;
 }
 
 .wps-shop-name {
-    height: 5rem;
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
+  height: 5rem;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
 .wps-shop-number {
-    display: inline-block;
-    font-weight: 700;
-    white-space: nowrap;
+  display: inline-block;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .wps-shop-logo {
-    width: 100%;
-    height: 5rem;
-    object-fit: cover;
+  width: 100%;
+  height: 5rem;
+  object-fit: contain;
 }
 
 .wps-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #555;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 .wps-contact-item:hover {
-    color: #0073aa;
+  color: #0073aa;
 }
 
 .wps-contact-icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .wps-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
 .wps-btn-primary {
-    background: #0073aa;
-    color: #fff;
+  background: #0073aa;
+  color: #fff;
 }
 
 .wps-btn-primary:hover {
-    background: #005a87;
-    color: #fff;
+  background: #005a87;
+  color: #fff;
 }
 
 .wps-btn-secondary {
-    background: #25d366;
-    color: #fff;
+  background: #25d366;
+  color: #fff;
 }
 
 .wps-btn-secondary:hover {
-    background: #20ba5a;
-    color: #fff;
+  background: #20ba5a;
+  color: #fff;
 }
 
 /* Filter section */
 .wps-filters {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    background: white;
-    padding: 70px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  background: white;
+  padding: 70px 100px;
 }
 
 .wps-filters h5 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .wps-filters-form {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    gap: 18px;
-    margin-bottom: 30px;
-    background: white;
-    align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 18px;
+  margin-bottom: 30px;
+  background: white;
+  align-items: center;
 }
 
 .wps-filter-select {
-    width: 30%;
+  width: 30%;
 }
 
 .wps-filter-button {
-    min-width: 160px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+  min-width: 160px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .wps-search-icon {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    color: inherit;
-    vertical-align: middle;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  color: inherit;
+  vertical-align: middle;
 }
 
 .wps-filter-button .wps-search-icon,
 .wps-filter-button .wps-search-icon * {
-    color: #ffffff;
-    stroke: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
 /* Empty state */
 .wps-empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: #666;
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
 }
 
 .wps-empty-state-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    opacity: 0.3;
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.3;
 }
 
 /* Modal for floor plan */
 .wps-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
 }
 
 .wps-modal.active {
-    display: flex;
+  display: flex;
 }
 
 .wps-modal-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 .wps-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #dc3232;
-    color: #fff;
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc3232;
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
 }
 
 .wps-modal-image {
-    max-width: 100%;
-    max-height: 80vh;
-    display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .wps-shops-grid {
-        grid-template-columns: 1fr;
-    }
+  .wps-shops-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .wps-filters {
-        flex-direction: column;
-    }
+  .wps-filters {
+    flex-direction: column;
+  }
 }

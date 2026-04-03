@@ -82,9 +82,6 @@ function wps_display_shop_detail()
 
     ob_start();
 ?>
-    <div class="wps-shop-detail" style="background-color: red; height: 50px;">
-        <p>test</p>
-    </div>
     <div class="wps-shop-detail">
         <h1 class="wps-shop-detail-title"><?php echo esc_html($shop->name); ?></h1>
 
