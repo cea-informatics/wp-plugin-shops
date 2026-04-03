@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Custom Shops
  * Description:     The plugin is responsible of stores management.
- * Version:         1.1.2
+ * Version:         1.1.3
  * Author:          CEA Informatics
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('WPS_VERSION', '1.0.6');
+define('WPS_VERSION', '1.1.3');
 define('WPS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WPS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -33,10 +33,10 @@ if (class_exists('WPS_Admin')) {
     WPS_Admin::init();
 }
 
-function wps_enqueue_scripts() {
+function wps_enqueue_scripts()
+{
     wp_enqueue_style('wps-style', WPS_PLUGIN_URL . 'assets/shops.css', array(), WPS_VERSION);
     wp_enqueue_script('wps-script', WPS_PLUGIN_URL . 'assets/shops.js', array('jquery'), WPS_VERSION, true);
 }
 
 add_action('wp_enqueue_scripts', 'wps_enqueue_scripts');
-
