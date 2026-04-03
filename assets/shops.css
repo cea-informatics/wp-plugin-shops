@@ -1,15 +1,9 @@
 /* WordPress Plugin Shops - Frontend Styles */
 
 #wp-shops-container {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  max-width: 1290px;
+  margin: 40px auto 40px auto;
+  width: 100%;
 }
 
 .wps-shops-grid {
@@ -32,6 +26,7 @@
   border: 1px solid #e0e0e0;
   width: 100%;
   height: 100%;
+  aspect-ratio: 1;
 }
 
 .wps-shop-name {
