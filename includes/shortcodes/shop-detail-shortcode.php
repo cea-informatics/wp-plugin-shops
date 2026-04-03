@@ -7,14 +7,16 @@ if (!defined('ABSPATH')) {
 /**
  * Get current shop_id from query string.
  */
-function wps_get_requested_shop_id() {
+function wps_get_requested_shop_id()
+{
     return isset($_GET['shop_id']) ? absint($_GET['shop_id']) : 0;
 }
 
 /**
  * Get requested shop object or null.
  */
-function wps_get_requested_shop() {
+function wps_get_requested_shop()
+{
     $shop_id = wps_get_requested_shop_id();
 
     if ($shop_id <= 0 || !class_exists('WPS_DB')) {
@@ -27,7 +29,8 @@ function wps_get_requested_shop() {
 /**
  * Detect if current page contains [shop_detail].
  */
-function wps_is_shop_detail_page() {
+function wps_is_shop_detail_page()
+{
     if (is_admin() || !is_singular()) {
         return false;
     }
@@ -43,7 +46,8 @@ function wps_is_shop_detail_page() {
 /**
  * Handle proper 404 when [shop_detail] is used with invalid/missing shop_id.
  */
-function wps_handle_shop_detail_404() {
+function wps_handle_shop_detail_404()
+{
     if (!wps_is_shop_detail_page()) {
         return;
     }
@@ -68,7 +72,8 @@ function wps_handle_shop_detail_404() {
     exit;
 }
 
-function wps_display_shop_detail() {
+function wps_display_shop_detail()
+{
     $shop = wps_get_requested_shop();
 
     if (!$shop) {
@@ -76,7 +81,10 @@ function wps_display_shop_detail() {
     }
 
     ob_start();
-    ?>
+?>
+    <div class="wps-shop-detail" style="background-color: red; height: 50px;">
+        <p>test</p>
+    </div>
     <div class="wps-shop-detail">
         <h1 class="wps-shop-detail-title"><?php echo esc_html($shop->name); ?></h1>
 
@@ -132,7 +140,7 @@ function wps_display_shop_detail() {
             </div>
         <?php endif; ?>
     </div>
-    <?php
+<?php
 
     return ob_get_clean();
 }

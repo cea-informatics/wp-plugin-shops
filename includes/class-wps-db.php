@@ -2,12 +2,14 @@
 
 if (!defined('ABSPATH')) exit;
 
-class WPS_DB {
+class WPS_DB
+{
 
     /**
      * Create database tables.
      */
-    public static function install() {
+    public static function install()
+    {
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
 
@@ -42,7 +44,8 @@ class WPS_DB {
     /**
      * Get all shops.
      */
-    public static function get_shops($active_only = false) {
+    public static function get_shops($active_only = false)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
 
@@ -56,7 +59,8 @@ class WPS_DB {
     /**
      * Get a single shop by ID.
      */
-    public static function get_shop($id) {
+    public static function get_shop($id)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
 
@@ -66,7 +70,8 @@ class WPS_DB {
     /**
      * Insert a new shop.
      */
-    public static function insert_shop($data) {
+    public static function insert_shop($data)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
 
@@ -82,7 +87,7 @@ class WPS_DB {
             'image_url'   => esc_url_raw($data['image_url']),
             'plan_url'    => esc_url_raw($data['plan_url']),
             'active'      => !empty($data['active']) ? 1 : 0,
-        ), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'));
+        ), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'));
 
         return $wpdb->insert_id;
     }
@@ -90,7 +95,8 @@ class WPS_DB {
     /**
      * Update an existing shop.
      */
-    public static function update_shop($id, $data) {
+    public static function update_shop($id, $data)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
 
@@ -106,13 +112,14 @@ class WPS_DB {
             'image_url'   => esc_url_raw($data['image_url']),
             'plan_url'    => esc_url_raw($data['plan_url']),
             'active'      => !empty($data['active']) ? 1 : 0,
-        ), array('id' => $id), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'), array('%d'));
+        ), array('id' => $id), array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d'), array('%d'));
     }
 
     /**
      * Delete a shop.
      */
-    public static function delete_shop($id) {
+    public static function delete_shop($id)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
 
@@ -122,7 +129,8 @@ class WPS_DB {
     /**
      * Count total shops.
      */
-    public static function count_shops($active_only = false) {
+    public static function count_shops($active_only = false)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
 
@@ -136,30 +144,32 @@ class WPS_DB {
     /**
      * Search shops by name or description.
      */
-    public static function search_shops($search_term, $active_only = false) {
+    public static function search_shops($search_term, $active_only = false)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
-        
+
         $search_term = '%' . $wpdb->esc_like($search_term) . '%';
-        
+
         $where = "WHERE (name LIKE %s OR description LIKE %s)";
         if ($active_only) {
             $where .= " AND active = 1";
         }
-        
+
         $sql = $wpdb->prepare(
             "SELECT * FROM $table $where ORDER BY name ASC",
             $search_term,
             $search_term
         );
-        
+
         return $wpdb->get_results($sql);
     }
 
     /**
      * Get shops by floor.
      */
-    public static function get_shops_by_floor($floor, $active_only = false) {
+    public static function get_shops_by_floor($floor, $active_only = false)
+    {
         global $wpdb;
         $table = $wpdb->prefix . 'wps_shops';
 
@@ -169,7 +179,7 @@ class WPS_DB {
         }
 
         $sql = $wpdb->prepare("SELECT * FROM $table $where ORDER BY name ASC", $floor);
-        
+
         return $wpdb->get_results($sql);
     }
 }
