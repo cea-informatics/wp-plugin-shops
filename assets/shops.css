@@ -1,4 +1,8 @@
-/* WordPress Plugin Shops - Frontend Styles */
+:root {
+  --dark-gray: #53563e;
+  --light-gray: #f4f4f4;
+  --dark: #202020;
+}
 
 #wp-shops-container {
   max-width: 1290px;
@@ -25,7 +29,7 @@
   background: #fff;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--light-gray);
   width: 100%;
   height: 100%;
   aspect-ratio: 1;
@@ -146,52 +150,101 @@
   opacity: 0.3;
 }
 
-/* Modal for floor plan */
-.wps-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-  align-items: center;
+.wps-shop-detail .ct-container.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  background-color: #fff;
+}
+
+.wps-shop-detail .wps-shop-detail-infos {
+  padding: 3rem 1.25rem;
+  color: var(--dark-gray);
+}
+
+.wps-shop-detail .wps-shop-detail-title {
+  font-size: 2.35rem;
+  margin: 1rem 0 2rem;
+  color: var(--dark-gray);
+}
+
+.wps-shop-detail .wps-shop-detail-description {
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+.wps-shop-detail .wps-shop-detail-meta {
+  background: white;
+}
+
+.wps-shop-detail .wps-shop-detail-meta .ct-container {
+  display: flex;
   justify-content: center;
 }
 
-.wps-modal.active {
-  display: flex;
-}
-
-.wps-modal-content {
+.wps-shop-detail .wps-shops-detail-meta-infos {
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
+  margin-top: -4rem;
+  z-index: 5;
 }
 
-.wps-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #dc3232;
-  color: #fff;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+.wps-shop-detail .wps-shops-detail-meta-infos > div {
+  display: flex;
+  margin-top: -4rem;
+  z-index: 5;
+  padding: 2rem 0;
+  background: white;
+  border: var(--light-gray) 1px solid;
+  padding: 2rem 0;
+}
+
+.wps-shop-detail .wps-shops-detail-meta-infos div a {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 3rem;
+  border: var(--light-gray) 1px solid;
+  border-top: none;
+  border-bottom: none;
+  color: var(--dark);
+  text-transform: uppercase;
+  min-width: 18rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.wps-shop-detail .wps-floor-container {
+  background: white;
+}
+
+.wps-shop-detail .wps-floor-container {
+  padding-top: 5rem;
+}
+
+.wps-shop-detail .wps-shop-plan {
+  padding: 1rem;
+  background: var(--light-gray);
+  border-radius: 4px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 0;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-xl {
   font-size: 1.5rem;
-  cursor: pointer;
-  line-height: 1;
+  padding: 1rem 2rem;
 }
 
-.wps-modal-image {
-  max-width: 100%;
-  max-height: 80vh;
-  display: block;
+.btn-primary {
+  background-color: var(--dark-gray);
+  color: #fff;
 }
 
 /* Responsive */
