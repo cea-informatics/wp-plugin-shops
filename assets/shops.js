@@ -53,4 +53,8 @@
       ? $("#wp-shops-container .wps-empty-state").hide()
       : $("#wp-shops-container .wps-empty-state").show();
   };
+
+  document
+    .querySelector("main#main > .ct-container-full")
+    .setAttribute("data-vertical-spacing", "top");
 })(jQuery);
