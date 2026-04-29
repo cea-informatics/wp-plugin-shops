@@ -258,7 +258,45 @@
     grid-template-columns: 1fr;
   }
 
-  .wps-filters {
+  .wps-filters-form {
     flex-direction: column;
+  }
+
+  .wps-filter-select {
+    width: 100%;
+  }
+
+  .wp-block-stackable-button button {
+    width: 100%;
+  }
+
+  .wps-shop-card a {
+    aspect-ratio: unset;
+  }
+
+  .wps-shop-detail .ct-container.main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .wps-shop-detail .wps-shop-detail-infos {
+    padding: 0 1rem;
+  }
+
+  .wps-shop-detail .wps-shops-detail-meta-infos > div {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .wps-shop-detail .wps-floor-container {
+    padding-top: 2rem;
+  }
+
+  .wps-shop-detail .wps-shop-plan {
+    padding: 0.5rem;
+  }
+
+  .wps-shop-detail .wps-shop-detail-meta {
+    margin-top: -1.5rem;
   }
 }
