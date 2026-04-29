@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Custom Shops
  * Description:     The plugin is responsible of stores management.
- * Version:         1.1.7
+ * Version:         1.1.8
  * Author:          CEA Informatics
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('WPS_VERSION', '1.1.7');
+define('WPS_VERSION', '1.1.8');
 define('WPS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WPS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
