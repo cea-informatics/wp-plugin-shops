@@ -54,7 +54,33 @@
       : $("#wp-shops-container .wps-empty-state").show();
   };
 
-  document
-    .querySelector("main#main > .ct-container-full")
-    .setAttribute("data-vertical-spacing", "top");
+  const removeVerticalSpacingBottom = () => {
+    const container = document.querySelector("main#main > .ct-container-full");
+
+    if (!container) {
+      return;
+    }
+
+    const attrName = "data-vertical-spacing";
+    const current = container.getAttribute(attrName);
+
+    if (!current || current === "null") {
+      return;
+    }
+
+    // Tokens are separated with ':'
+    const tokens = current
+      .split(":")
+      .map((t) => t.trim())
+      .filter(Boolean);
+    const filtered = tokens.filter((t) => t !== "bottom");
+
+    if (filtered.length === 0) {
+      return;
+    }
+
+    container.setAttribute(attrName, filtered.join(":"));
+  };
+
+  removeVerticalSpacingBottom();
 })(jQuery);
