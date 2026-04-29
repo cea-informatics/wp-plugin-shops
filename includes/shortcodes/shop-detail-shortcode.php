@@ -27,9 +27,6 @@ function wps_display_shop_detail()
             <?php endif; ?>
             <div class="wps-shop-detail-infos">
                 <h1 class="wps-shop-detail-title"><?php echo esc_html($shop->name); ?></h1>
-                <?php if (!empty($shop->floor)): ?>
-                    <strong><?php esc_html_e('Étage :', 'wp-plugin-shops'); ?></strong> <?php echo esc_html(WPS_Floor::labelFor($shop->floor)); ?>
-                <?php endif; ?>
                 <?php if (!empty($shop->description)): ?>
                     <div class="wps-shop-detail-description">
                         <?php echo wp_kses_post(wpautop($shop->description)); ?>

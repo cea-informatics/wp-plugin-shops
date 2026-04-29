@@ -159,6 +159,8 @@
 
 .wps-shop-detail .wps-shop-detail-infos {
   padding: 3rem 1.25rem;
+  padding-right: 2rem;
+  margin-bottom: 3rem;
   color: var(--dark-gray);
 }
 
@@ -168,6 +170,11 @@
   color: var(--dark-gray);
 }
 
+.wps-shop-detail .wps-shop-detail-image img {
+  height: 100%;
+  object-fit: cover;
+}
+
 .wps-shop-detail .wps-shop-detail-description {
   line-height: 1.5;
   margin: 1rem 0;
@@ -175,6 +182,7 @@
 
 .wps-shop-detail .wps-shop-detail-meta {
   background: white;
+  margin-top: -3rem;
 }
 
 .wps-shop-detail .wps-shop-detail-meta .ct-container {
@@ -184,14 +192,11 @@
 
 .wps-shop-detail .wps-shops-detail-meta-infos {
   position: relative;
-  margin-top: -4rem;
   z-index: 5;
 }
 
 .wps-shop-detail .wps-shops-detail-meta-infos > div {
   display: flex;
-  margin-top: -4rem;
-  z-index: 5;
   padding: 2rem 0;
   background: white;
   border: var(--light-gray) 1px solid;
