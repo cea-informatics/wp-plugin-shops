@@ -16,7 +16,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2.5rem;
   width: calc(100% + (var(--margin) * 2));
-  margin: 0 calc(var(--margin) * -1);
+  margin: 0;
+  max-width: 100%;
 }
 
 .wps-shop-card a {
